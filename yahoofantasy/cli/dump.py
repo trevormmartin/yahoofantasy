@@ -44,7 +44,7 @@ def _player_out(week_num, player, team, att_num=1):
         o = {
             "name": player.name.full,
             "week": week_num,
-            "manager": team.manager.nickname,
+            "manager": team.name,
             "position": player.primary_position,
             "roster_position": player.selected_position.position,
             "points": player.get_points(week_num),
@@ -59,7 +59,7 @@ def _player_out(week_num, player, team, att_num=1):
             return {
                 "name": player.name.full,
                 "week": week_num,
-                "manager": team.manager.nickname,
+                "manager": team.name,
                 "position": player.primary_position,
                 "roster_position": player.selected_position.position,
                 "points": "N/A",
@@ -159,12 +159,12 @@ def matchups(ctx):
                     {
                         "week": week.week_num,
                         "win": team1_win,
-                        "manager": matchup.team1.manager.nickname,
+                        "manager": matchup.team1.name,
                         "points": matchup.teams.team[0].team_points.total,
                         "proj_points": matchup.teams.team[
                             0
                         ].team_projected_points.total,
-                        "opponent": matchup.team2.manager.nickname,
+                        "opponent": matchup.team2.name,
                         "opp_points": matchup.teams.team[1].team_points.total,
                         "opp_proj_points": matchup.teams.team[
                             1
@@ -176,12 +176,12 @@ def matchups(ctx):
                     {
                         "week": week.week_num,
                         "win": not team1_win,
-                        "manager": matchup.team2.manager.nickname,
+                        "manager": matchup.team2.name,
                         "points": matchup.teams.team[1].team_points.total,
                         "proj_points": matchup.teams.team[
                             1
                         ].team_projected_points.total,
-                        "opponent": matchup.team1.manager.nickname,
+                        "opponent": matchup.team1.name,
                         "opp_points": matchup.teams.team[0].team_points.total,
                         "opp_proj_points": matchup.teams.team[
                             0
@@ -213,7 +213,7 @@ def draftresults(ctx):
             {
                 "pick": result.pick,
                 "round": result.round,
-                "manager": result.team.manager.nickname,
+                "manager": result.team.name,
                 "player": result.player.name.full,
                 "pos": result.player.display_position,
             }
